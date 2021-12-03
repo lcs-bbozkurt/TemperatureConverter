@@ -26,7 +26,7 @@ struct ContentView: View {
         Text("Celsuis")
                 .bold()
         
- // Input - Select current temperature
+ // Input1 - Select current temperature
         Slider(value: $temperature,
                in: -50.0...50.0,
                step: 1.0,
@@ -40,7 +40,7 @@ struct ContentView: View {
                     Text("50")
         })
         
-        // Output - show current temperature
+        // Output1 - show current temperature
             HStack {
                     Spacer()
                     Text("\( String(format: "%.0f", temperature))")
@@ -62,14 +62,20 @@ struct ContentView: View {
                     Spacer()
                 }
             
+          // Input2 - Give feedback about what to wear according to the temperature.
+            
+            // First of all, we need to create a constant to give the user the feedback for each temperature degree.
+            
+            let TemperatureAsInteger = Int(temperature)
+            
+            
+            // Make conditionally running blocks of code.
+            
+    
             
             
             
-            
-            
-            
-            
-            Spacer()
+       
     
         }
         .navigationTitle("Temperature Converter")
