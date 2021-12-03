@@ -9,7 +9,13 @@ import SwiftUI
 
 struct ContentView: View {
     @State var temperature: Double = 15.00
+    @State var feedback = ""
     
+    
+    
+    var temperatureInFahrenheit: Double {
+        return (temperature * 1.8) + 32
+    }
     
     
     
@@ -17,11 +23,11 @@ struct ContentView: View {
        
         VStack (alignment: .leading, spacing: 20) {
         
-        Text("Temperature")
+        Text("Celsuis")
                 .bold()
         
-        
-        Slider(value: .constant(50.0),
+ // Input - Select current temperature
+        Slider(value: $temperature,
                in: -50.0...50.0,
                step: 1.0,
                label: {
@@ -34,11 +40,36 @@ struct ContentView: View {
                     Text("50")
         })
         
- 
+        // Output - show current temperature
+            HStack {
+                    Spacer()
+                    Text("\( String(format: "%.0f", temperature))")
+                        .font(.title2)
+                        .bold()
+                    Spacer()
+                }
+            
     
-    
-    
-    
+            Text("Fahrenheit")
+                    .bold()
+            // Output - covert celsius to fahrenheit
+            
+            HStack {
+                    Spacer()
+            Text("\( String(format: "%.0f", temperatureInFahrenheit))")
+                        .font(.title2)
+                        .bold()
+                    Spacer()
+                }
+            
+            
+            
+            
+            
+            
+            
+            
+            Spacer()
     
         }
         .navigationTitle("Temperature Converter")
